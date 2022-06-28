@@ -2,6 +2,7 @@ import { execFile } from "child_process";
 import { promises } from "fs";
 import { resolve } from "path";
 import { promisify } from "util";
+import { PackageJson } from "type-fest";
 
 const execFileP = promisify(execFile);
 const { mkdir, writeFile } = promises;
@@ -16,7 +17,10 @@ const { mkdir, writeFile } = promises;
  *   },
  * });
  */
-export async function packageJson(data, { cwd = `.` } = {}): Promise<void> {
+export async function packageJson(
+  data: PackageJson,
+  { cwd = `.` } = {}
+): Promise<void> {
   const target = resolve(cwd);
   await mkdir(target, { recursive: true });
 
@@ -41,7 +45,7 @@ export async function packageJson(data, { cwd = `.` } = {}): Promise<void> {
  * });
  */
 export async function packageJsonAndInstall(
-  data,
+  data: PackageJson,
   { cwd = `.` } = {}
 ): Promise<string> {
   await packageJson(data, { cwd });
@@ -57,10 +61,7 @@ export async function packageJsonAndInstall(
  *
  * Ex: await yarn(`install`);
  */
-export async function yarn(...args): Promise<string> {
-  let opts;
-  if (typeof args[args.length - 1] === `object`) opts = args.pop();
-
+export async function yarn(...args: string[]): Promise<string> {
   let stdout;
   try {
     ({ stdout } = await execFileP(
@@ -69,16 +70,20 @@ export async function yarn(...args): Promise<string> {
       {
         env: {
           ...process.env,
-          YARN_ENABLE_COLORS: 0,
-          YARN_IGNORE_PATH: 1,
-          YARN_ENABLE_INLINE_BUILDS: 1,
-          YARN_ENABLE_IMMUTABLE_INSTALLS: 0,
+          YARN_ENABLE_COLORS: "0",
+          YARN_IGNORE_PATH: "1",
+          YARN_ENABLE_INLINE_BUILDS: "1",
+          YARN_ENABLE_IMMUTABLE_INSTALLS: "0",
         },
-        ...opts,
       }
     ));
   } catch (error) {
-    error.message += `\n${error.stdout}`;
+    if (error instanceof Error) {
+      // @ts-ignore
+      // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+      error.message += `\n${error.stdout || ""}`;
+      throw error;
+    }
     throw error;
   }
 
@@ -99,13 +104,13 @@ export async function yarn(...args): Promise<string> {
  *   return {a, b};
  * }`))
  */
-export async function node(source, opts = {}): Promise<any> {
+export async function node(source: string): Promise<any> {
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-return
   return JSON.parse(
-    await global.yarn(
+    await yarn(
       `node`,
       `-e`,
-      `Promise.resolve().then(async () => ${source}).catch(err => err).then(res => console.log(JSON.stringify(res)))`,
-      opts
+      `Promise.resolve().then(async () => ${source}).catch(err => err).then(res => console.log(JSON.stringify(res)))`
     )
   );
 }

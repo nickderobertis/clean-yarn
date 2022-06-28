@@ -79,6 +79,7 @@
     "lint-staged": "^10.5.4",
     "prettier": "^2.2.1",
     "semantic-release": "^19.0.2",
+    "type-fest": "^2.14.0",
     "typescript": "^4.2.4",
     "vite": "^2.9.6",
     "vitest": "^0.10.0"
