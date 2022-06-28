@@ -1,6 +1,9 @@
-import { describe, it, beforeEach, afterEach } from "vitest";
-import { packageJsonAndInstall } from "../testutils/yarn-utils";
+import { resolve } from "path";
+import { existsSync } from "fs";
+import { describe, it, beforeEach, afterEach, expect } from "vitest";
+import { createPackageJsonAndInstall } from "../testutils/ext-yarn";
 import { cleanUpTempDir, createTempDir } from "../testutils/temp-dir";
+import { createYarnRCYaml } from "../testutils/yarn-utils";
 
 let tempDir: string;
 
@@ -14,10 +17,14 @@ describe("index", () => {
   });
 
   it("noop", async () => {
-    const result = await packageJsonAndInstall(
+    await createYarnRCYaml({ nodeLinker: "node-modules" }, tempDir);
+    await createPackageJsonAndInstall(
       { dependencies: { lodash: "*" } },
       { cwd: tempDir }
     );
-    console.log(result);
+    const nodeModulesPath = resolve(tempDir, "node_modules");
+    expect(existsSync(nodeModulesPath)).toBe(true);
+    const yarnLockPath = resolve(tempDir, "yarn.lock");
+    expect(existsSync(yarnLockPath)).toBe(true);
   });
 });
