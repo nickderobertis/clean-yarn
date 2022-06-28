@@ -6,8 +6,8 @@ module.exports = defineConfig({
   build: {
     lib: {
       entry: path.resolve(__dirname, "src/index.ts"),
-      name: "nuke-monorepo",
-      fileName: (format) => `nuke-monorepo.${format}.js`
+      name: "nuke-yarn",
+      fileName: (format) => `nuke-yarn.${format}.js`
     },
     outDir: path.resolve(__dirname, "./dist"),
     rollupOptions: {

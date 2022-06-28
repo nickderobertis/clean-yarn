@@ -15,14 +15,14 @@
     {
       "name": "copier-typescript-npm-sphinx",
       "data": {
-        "package_name": "nuke-monorepo",
-        "repo_name": "nuke-monorepo",
-        "full_name": "Nuke Monorepo",
-        "short_description": "Deletes all node_modules folders and yarn.lock files in a Yarn Workspaces monorepo",
+        "package_name": "nuke-yarn",
+        "repo_name": "nuke-yarn",
+        "full_name": "Nuke Yarn",
+        "short_description": "Deletes all node_modules folders and yarn.lock files in a Yarn project, including workspaces",
         "main_branch_name": "main",
         "author": "Nick DeRobertis",
         "repo_username": "nickderobertis",
-        "package_filename": "nuke-monorepo"
+        "package_filename": "nuke-yarn"
       },
       "version": "1e8bd4374603015620f378a948db1b6066d8b2a6",
       "add_mode": "local",
