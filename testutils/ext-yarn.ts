@@ -4,6 +4,14 @@ import { resolve } from "path";
 import { promisify } from "util";
 import { PackageJson } from "type-fest";
 
+type YarnSpecificPackageJson = {
+  installConfig?: {
+    hoistingLimits?: "workspaces" | "dependencies" | "none";
+  };
+};
+
+type YarnPackageJson = PackageJson & YarnSpecificPackageJson;
+
 const execFileP = promisify(execFile);
 const { mkdir, writeFile } = promises;
 
@@ -17,8 +25,8 @@ const { mkdir, writeFile } = promises;
  *   },
  * });
  */
-export async function packageJson(
-  data: PackageJson,
+export async function createPackageJson(
+  data: YarnPackageJson,
   { cwd = `.` } = {}
 ): Promise<void> {
   const target = resolve(cwd);
@@ -45,15 +53,11 @@ export async function packageJson(
  * });
  */
 export async function createPackageJsonAndInstall(
-  data: PackageJson,
+  data: YarnPackageJson,
   { cwd = `.` } = {}
 ): Promise<string> {
-  await packageJson(data, { cwd });
-  // When working inside the repo, Yarn won't recogize it as a separate project
-  // unless we create an empty yarn.lock file
-  const yarnLockPath = resolve(cwd, "yarn.lock");
-  await writeFile(yarnLockPath, "");
-  return await yarn("install", "--cwd", cwd);
+  await createPackageJson(data, { cwd });
+  return await yarnInstall(cwd);
 }
 
 /**
@@ -88,6 +92,14 @@ export async function yarn(...args: string[]): Promise<string> {
   }
 
   return stdout;
+}
+
+export async function yarnInstall(cwd = "."): Promise<string> {
+  // When working inside the repo, Yarn won't recogize it as a separate project
+  // unless we create an empty yarn.lock file
+  const yarnLockPath = resolve(cwd, "yarn.lock");
+  await writeFile(yarnLockPath, "");
+  return await yarn("install", "--cwd", cwd);
 }
 
 /**

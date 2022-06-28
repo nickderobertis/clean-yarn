@@ -4,7 +4,7 @@ import os from "os";
 
 // Set to true to output files in the generated folder in the project
 // for debugging purposes
-const useLocalDir = true;
+const useLocalDir = false;
 
 let tempDirPath: string;
 
