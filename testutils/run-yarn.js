@@ -32,4 +32,4 @@ require(`@babel/register`)({
 // Exposes the CLI version as like for the bundle
 global.YARN_VERSION = `${require(`@yarnpkg/cli/package.json`).version}-dev`;
 
-module.exports = require(`@yarnpkg/cli/lib/main`);
+module.exports = require(`./yarn-cli`);

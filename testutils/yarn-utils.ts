@@ -1,11 +1,10 @@
 import { execFile } from "child_process";
-const {
-  promises: { mkdir, writeFile },
-} = require(`fs`);
-const { resolve } = require(`path`);
-const { promisify } = require(`util`);
+import { promises } from "fs";
+import { resolve } from "path";
+import { promisify } from "util";
 
 const execFileP = promisify(execFile);
+const { mkdir, writeFile } = promises;
 
 /**
  * Creates a package.json file in the current folder, and an `index.js` that
@@ -46,7 +45,11 @@ export async function packageJsonAndInstall(
   { cwd = `.` } = {}
 ): Promise<string> {
   await packageJson(data, { cwd });
-  return await yarn(`install`);
+  // When working inside the repo, Yarn won't recogize it as a separate project
+  // unless we create an empty yarn.lock file
+  const yarnLockPath = resolve(cwd, "yarn.lock");
+  await writeFile(yarnLockPath, "");
+  return await yarn("install", "--cwd", cwd);
 }
 
 /**

@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach, afterEach } from "vitest";
-import { packageJsonAndInstall } from "../testutils/yarn-utils";
+import { packageJsonAndInstall, yarn } from "../testutils/yarn-utils";
 import { cleanUpTempDir, createTempDir } from "../testutils/temp-dir";
 
 let tempDir: string;
@@ -14,9 +14,10 @@ describe("index", () => {
   });
 
   it("noop", async () => {
-    await packageJsonAndInstall(
+    const result = await packageJsonAndInstall(
       { dependencies: { lodash: "*" } },
       { cwd: tempDir }
     );
+    console.log(result);
   });
 });
