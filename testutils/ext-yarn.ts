@@ -2,15 +2,7 @@ import { execFile } from "child_process";
 import { promises } from "fs";
 import { resolve } from "path";
 import { promisify } from "util";
-import { PackageJson } from "type-fest";
-
-type YarnSpecificPackageJson = {
-  installConfig?: {
-    hoistingLimits?: "workspaces" | "dependencies" | "none";
-  };
-};
-
-type YarnPackageJson = PackageJson & YarnSpecificPackageJson;
+import { YarnPackageJson } from "../src/types";
 
 const execFileP = promisify(execFile);
 const { mkdir, writeFile } = promises;

@@ -1,5 +1,5 @@
 import { resolve } from "path";
-import { describe, it, beforeEach, afterEach, expect, vi } from "vitest";
+import { describe, it, beforeEach, afterEach, expect } from "vitest";
 import { cleanUpTempDir, createTempDir } from "../testutils/temp-dir";
 import {
   createMonorepoProject,

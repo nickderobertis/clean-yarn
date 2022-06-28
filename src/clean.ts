@@ -3,6 +3,7 @@ import { getWorkspaces } from "react-native-monorepo-tools";
 import { ungzip } from "pako";
 import Listr from "listr";
 import { resolve } from "path";
+import { isYarnWorkspacesMonorepo } from "./workspaces";
 
 /**
  * Display Header
@@ -27,13 +28,6 @@ export function clean(cwd = "."): Promise<void> {
   // Display Header
   cloud();
 
-  const workspaceNms = getWorkspaces({ cwd });
-
-  const cleanWorkspaceNMTasks = workspaceNms.map(w => ({
-    title: `${w}/node_modules`,
-    task: () => promisedRimraf(resolve(w, "node_modules")),
-  }));
-
   const cleanRootNmTask = {
     title: "Removing Root node_modules",
     task: () => promisedRimraf(resolve(cwd, "node_modules")),
@@ -44,19 +38,28 @@ export function clean(cwd = "."): Promise<void> {
     task: () => promisedRimraf(resolve(cwd, "yarn.lock")),
   };
 
-  const tasks = new Listr<void>([
+  const tasks: Listr.ListrTask<void>[] = [cleanRootNmTask, cleanYarnLock];
+
+  if (isYarnWorkspacesMonorepo(cwd)) {
+    const workspaceNms = getWorkspaces({ cwd });
+
+    const cleanWorkspaceNMTasks = workspaceNms.map(w => ({
+      title: `${w}/node_modules`,
+      task: () => promisedRimraf(resolve(w, "node_modules")),
+    }));
+    tasks.push(...cleanWorkspaceNMTasks);
+  }
+
+  const taskRunner = new Listr<void>([
     {
       title: "Removing Workspace Node_Modules & Root Lock File",
       task: () => {
-        return new Listr(
-          [...cleanWorkspaceNMTasks, cleanRootNmTask, cleanYarnLock],
-          {
-            concurrent: true,
-          }
-        );
+        return new Listr(tasks, {
+          concurrent: true,
+        });
       },
     },
   ]);
 
-  return tasks.run().catch(err => console.error(err));
+  return taskRunner.run().catch(err => console.error(err));
 }
