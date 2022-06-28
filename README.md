@@ -19,7 +19,7 @@ npm install nuke-yarn
 ## Usage
 
 ```ts
-import 'nuke-yarn';
+import "nuke-yarn";
 ```
 
 ## Development Status
@@ -40,19 +40,20 @@ The library files are stored in `src`, while the files for the development page 
 
 ## Author
 
-Created by Nick DeRobertis. MIT License.
+The original `clean.js` script was created by [Miguel Bermudez](https://github.com/miguelbermudez). It was then adapted into
+a library by Nick DeRobertis. MIT License.
 
-[build-img]:https://github.com/nickderobertis/nuke-yarn/actions/workflows/release.yml/badge.svg
-[build-url]:https://github.com/nickderobertis/nuke-yarn/actions/workflows/release.yml
-[downloads-img]:https://img.shields.io/npm/dt/nuke-yarn
-[downloads-url]:https://www.npmtrends.com/nuke-yarn
-[npm-img]:https://img.shields.io/npm/v/nuke-yarn
-[npm-url]:https://www.npmjs.com/package/nuke-yarn
-[issues-img]:https://img.shields.io/github/issues/nickderobertis/nuke-yarn
-[issues-url]:https://github.com/nickderobertis/nuke-yarn/issues
-[codecov-img]:https://codecov.io/gh/nickderobertis/nuke-yarn/branch/main/graph/badge.svg
-[codecov-url]:https://codecov.io/gh/nickderobertis/nuke-yarn
-[semantic-release-img]:https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg
-[semantic-release-url]:https://github.com/semantic-release/semantic-release
-[commitizen-img]:https://img.shields.io/badge/commitizen-friendly-brightgreen.svg
-[commitizen-url]:http://commitizen.github.io/cz-cli/
+[build-img]: https://github.com/nickderobertis/nuke-yarn/actions/workflows/release.yml/badge.svg
+[build-url]: https://github.com/nickderobertis/nuke-yarn/actions/workflows/release.yml
+[downloads-img]: https://img.shields.io/npm/dt/nuke-yarn
+[downloads-url]: https://www.npmtrends.com/nuke-yarn
+[npm-img]: https://img.shields.io/npm/v/nuke-yarn
+[npm-url]: https://www.npmjs.com/package/nuke-yarn
+[issues-img]: https://img.shields.io/github/issues/nickderobertis/nuke-yarn
+[issues-url]: https://github.com/nickderobertis/nuke-yarn/issues
+[codecov-img]: https://codecov.io/gh/nickderobertis/nuke-yarn/branch/main/graph/badge.svg
+[codecov-url]: https://codecov.io/gh/nickderobertis/nuke-yarn
+[semantic-release-img]: https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg
+[semantic-release-url]: https://github.com/semantic-release/semantic-release
+[commitizen-img]: https://img.shields.io/badge/commitizen-friendly-brightgreen.svg
+[commitizen-url]: http://commitizen.github.io/cz-cli/
