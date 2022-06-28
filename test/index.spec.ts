@@ -49,5 +49,5 @@ describe("index", () => {
     expect(existsSync(appNodeModulesPath)).toBe(false);
     const packageNodeModulesPath = resolve(packagePath, "node_modules");
     expect(existsSync(packageNodeModulesPath)).toBe(false);
-  }, 10000);
+  }, 30000);
 });
