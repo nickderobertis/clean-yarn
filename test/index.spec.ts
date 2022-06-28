@@ -22,7 +22,7 @@ describe("index", () => {
   it("cleans a non-monorepo", async () => {
     await createNonMonorepoProject(tempDir);
 
-    clean(tempDir);
+    await clean(tempDir);
 
     const nodeModulesPath = resolve(tempDir, "node_modules");
     expect(existsSync(nodeModulesPath)).toBe(false);
@@ -33,7 +33,7 @@ describe("index", () => {
   it("cleans a monorepo", async () => {
     await createMonorepoProject(tempDir);
 
-    clean(tempDir);
+    await clean(tempDir);
 
     const appPath = resolve(tempDir, "apps/my-app");
     const packagePath = resolve(tempDir, "packages/my-package");
