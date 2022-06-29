@@ -6,4 +6,4 @@ branches:
   - name: alpha
     prerelease: true
 
-repositoryUrl: https://github.com/nickderobertis/nuke-monorepo
+repositoryUrl: https://github.com/nickderobertis/nuke-yarn
