@@ -1,5 +1,12 @@
 # Nuke Yarn
 
+<div align="center">
+  <p align="center">
+      <img src="docs/assets/images/nuke-yarn.gif" alt="nuke-yarn example GIF">
+  </p>
+  <sub>It's the only way to be sure</a></sub>
+</div>
+
 [![npm package][npm-img]][npm-url]
 [![Build Status][build-img]][build-url]
 [![Downloads][downloads-img]][downloads-url]
