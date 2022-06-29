@@ -12,14 +12,51 @@ Deletes all node_modules folders and yarn.lock files in a Yarn project, includin
 
 ## Install
 
+It's recommended to use a global installation, so you can use this in any project:
+
 ```bash
-npm install nuke-yarn
+npm install -g nuke-yarn
 ```
 
 ## Usage
 
+### CLI
+
+Simply run `nuke-yarn` in the root of your project:
+
+```bash
+$ nuke-yarn
+```
+
+You can also pass a working directory instead of `cd`ing to the root of your project:
+
+```bash
+$ nuke-yarn --cwd /path/to/project
+```
+
+Pass `--help` to see all options:
+
+```bash
+$ nuke-yarn --help
+Delete all node_modules and yarn.lock files in the current project
+
+USAGE
+  $ nuke-yarn [-c <value>]
+
+FLAGS
+  -c, --cwd=<value>  [default: .] Working directory for the project
+
+DESCRIPTION
+  Delete all node_modules and yarn.lock files in the current project
+```
+
+### JS/TS API
+
 ```ts
-import "nuke-yarn";
+import { clean } from "nuke-yarn";
+
+clean(); // Defaults to current working directory
+clean("/path/to/project"); // Pass a working directory
 ```
 
 ## Development Status
@@ -40,8 +77,8 @@ The library files are stored in `src`, while the files for the development page 
 
 ## Author
 
-The original `clean.js` script was created by [Miguel Bermudez](https://github.com/miguelbermudez). It was then adapted into
-a library by Nick DeRobertis. MIT License.
+The original `clean.js` script was created by [Miguel Bermudez](https://github.com/miguelbermudez). It was then converted to TypeScript and adapted into
+a CLI library with tests by Nick DeRobertis. MIT License.
 
 [build-img]: https://github.com/nickderobertis/nuke-yarn/actions/workflows/release.yml/badge.svg
 [build-url]: https://github.com/nickderobertis/nuke-yarn/actions/workflows/release.yml
