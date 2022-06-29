@@ -41,7 +41,7 @@ export function clean(cwd = "."): Promise<void> {
   const tasks: Listr.ListrTask<void>[] = [cleanRootNmTask, cleanYarnLock];
 
   if (isYarnWorkspacesMonorepo(cwd)) {
-    const workspaceNms = getWorkspaces({ cwd });
+    const workspaceNms = getWorkspaces({ cwd: resolve(cwd) });
 
     const cleanWorkspaceNMTasks = workspaceNms.map(w => ({
       title: `${w}/node_modules`,
