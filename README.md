@@ -2,7 +2,7 @@
 
 <div align="center">
   <p align="center">
-      <img src="docs/assets/images/clean-yarn.gif" alt="clean-yarn example GIF">
+      <img src="https://raw.githubusercontent.com/nickderobertis/clean-yarn/main/docs/assets/images/clean-yarn.gif" alt="clean-yarn example GIF">
   </p>
   <sub>It's the only way to be sure.</a></sub>
 </div>
