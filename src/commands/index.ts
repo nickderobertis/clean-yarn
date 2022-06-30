@@ -1,7 +1,7 @@
 import { Command, Flags } from "@oclif/core";
 import { clean } from "../clean";
 
-export default class NukeYarnCommand extends Command {
+export default class CleanYarnCommand extends Command {
   static description =
     "Delete all node_modules and yarn.lock files in the current project";
 
@@ -17,7 +17,7 @@ export default class NukeYarnCommand extends Command {
   };
 
   async run(): Promise<void> {
-    const { flags } = await this.parse(NukeYarnCommand);
+    const { flags } = await this.parse(CleanYarnCommand);
 
     await clean(flags.cwd);
   }

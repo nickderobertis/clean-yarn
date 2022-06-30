@@ -46,7 +46,6 @@
   "keywords": [
     "yarn",
     "clean",
-    "nuke",
     "reset",
     "node_modules",
     "yarn.lock"
@@ -99,8 +98,8 @@
     "*.ts": "eslint --cache --cache-location .eslintcache --fix"
   },
   "oclif": {
-    "bin": "nuke-yarn",
-    "dirname": "nuke-yarn",
+    "bin": "clean-yarn",
+    "dirname": "clean-yarn",
     "commands": "./dist/src/commands",
     "default": "."
   }

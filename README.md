@@ -2,7 +2,7 @@
 
 <div align="center">
   <p align="center">
-      <img src="docs/assets/images/nuke-yarn.gif" alt="nuke-yarn example GIF">
+      <img src="docs/assets/images/clean-yarn.gif" alt="clean-yarn example GIF">
   </p>
   <sub>It's the only way to be sure.</a></sub>
 </div>
@@ -30,26 +30,26 @@ npm install -g clean-yarn
 
 ### CLI
 
-Simply run `nuke-yarn` in the root of your project:
+Simply run `clean-yarn` in the root of your project:
 
 ```bash
-$ nuke-yarn
+$ clean-yarn
 ```
 
 You can also pass a working directory instead of `cd`ing to the root of your project:
 
 ```bash
-$ nuke-yarn --cwd /path/to/project
+$ clean-yarn --cwd /path/to/project
 ```
 
 Pass `--help` to see all options:
 
 ```bash
-$ nuke-yarn --help
+$ clean-yarn --help
 Delete all node_modules and yarn.lock files in the current project
 
 USAGE
-  $ nuke-yarn [-c <value>]
+  $ clean-yarn [-c <value>]
 
 FLAGS
   -c, --cwd=<value>  [default: .] Working directory for the project

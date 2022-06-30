@@ -1,14 +1,14 @@
 import { existsSync } from "fs";
 import { resolve } from "path";
 import { afterEach, beforeEach, describe, it, vi, expect } from "vitest";
-import NukeYarnCommand from "../src/commands";
+import CleanYarnCommand from "../src/commands";
 import { createNonMonorepoProject } from "../testutils/project";
 import { cleanUpTempDir, createTempDir } from "../testutils/temp-dir";
 
 let tempDir: string;
 const result: string[] = [];
 
-describe("nuke-yarn", () => {
+describe("clean-yarn", () => {
   beforeEach(() => {
     tempDir = createTempDir();
     // @ts-ignore
@@ -23,10 +23,10 @@ describe("nuke-yarn", () => {
     vi.restoreAllMocks();
   });
 
-  it("nukes yarn.lock and node_modules", async () => {
+  it("cleans yarn.lock and node_modules", async () => {
     await createNonMonorepoProject(tempDir);
 
-    await NukeYarnCommand.run(["--cwd", tempDir]);
+    await CleanYarnCommand.run(["--cwd", tempDir]);
 
     // Assert that one of the output lines contains yarn.lock and one contains node_modules
     expect(result.some(line => line.includes("yarn.lock"))).toBe(true);

@@ -31,14 +31,14 @@ export async function createMonorepoProject(dir: string): Promise<void> {
   await createPackageJson(
     {
       workspaces: { packages: ["packages/*", "apps/*"] },
-      dependencies: { lodash: "*" },
+      dependencies: { lodash: "*", express: "*", axios: "*", vue: "*" },
       name: "monorepo",
     },
     { cwd: dir }
   );
   await createPackageJson(
     {
-      dependencies: { lodash: "*", typescript: "*", chalk: "*" },
+      dependencies: { lodash: "*", typescript: "*", chalk: "*", vite: "*" },
       name: "my-app",
       installConfig: { hoistingLimits: "workspaces" },
     },
@@ -46,7 +46,11 @@ export async function createMonorepoProject(dir: string): Promise<void> {
   );
   await createPackageJson(
     {
-      dependencies: { typescript: "*", request: "*" },
+      dependencies: {
+        typescript: "*",
+        "react-native": "*",
+        "react-native-web": "*",
+      },
       name: "my-package",
       installConfig: { hoistingLimits: "workspaces" },
     },

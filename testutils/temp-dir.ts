@@ -4,7 +4,7 @@ import os from "os";
 
 // Set to true to output files in the generated folder in the project
 // for debugging purposes
-const useLocalDir = false;
+const useLocalDir = true;
 
 let tempDirPath: string;
 
@@ -23,5 +23,5 @@ export function cleanUpTempDir(): void {
 }
 
 function randomDirName(): string {
-  return `nuke-monorepo-${Math.random().toString(36).substring(2)}`;
+  return `clean-monorepo-${Math.random().toString(36).substring(2)}`;
 }
