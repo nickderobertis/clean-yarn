@@ -6,8 +6,8 @@ module.exports = defineConfig({
   build: {
     lib: {
       entry: path.resolve(__dirname, "src/index.ts"),
-      name: "nuke-yarn",
-      fileName: (format) => `nuke-yarn.${format}.js`
+      name: "clean-yarn",
+      fileName: (format) => `clean-yarn.${format}.js`
     },
     outDir: path.resolve(__dirname, "./dist"),
     rollupOptions: {

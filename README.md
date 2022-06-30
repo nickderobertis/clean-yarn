@@ -1,4 +1,4 @@
-# Nuke Yarn
+# Clean Yarn
 
 [![npm package][npm-img]][npm-url]
 [![Build Status][build-img]][build-url]
@@ -13,21 +13,21 @@ Deletes all node_modules folders and yarn.lock files in a Yarn project, includin
 ## Install
 
 ```bash
-npm install nuke-yarn
+npm install clean-yarn
 ```
 
 ## Usage
 
 ```ts
-import 'nuke-yarn';
+import 'clean-yarn';
 ```
 
 ## Development Status
 
 This project uses [semantic-release](https://github.com/semantic-release/semantic-release) for versioning.
 Any time the major version changes, there may be breaking changes. If it is working well for you, consider
-pegging to the current major version, e.g. `nuke-yarn@v1`, to avoid breaking changes. Alternatively,
-you can always point to the most recent stable release with the `nuke-yarn@latest`.
+pegging to the current major version, e.g. `clean-yarn@v1`, to avoid breaking changes. Alternatively,
+you can always point to the most recent stable release with the `clean-yarn@latest`.
 
 ## Developing
 
@@ -42,16 +42,16 @@ The library files are stored in `src`, while the files for the development page 
 
 Created by Nick DeRobertis. MIT License.
 
-[build-img]:https://github.com/nickderobertis/nuke-yarn/actions/workflows/release.yml/badge.svg
-[build-url]:https://github.com/nickderobertis/nuke-yarn/actions/workflows/release.yml
-[downloads-img]:https://img.shields.io/npm/dt/nuke-yarn
-[downloads-url]:https://www.npmtrends.com/nuke-yarn
-[npm-img]:https://img.shields.io/npm/v/nuke-yarn
-[npm-url]:https://www.npmjs.com/package/nuke-yarn
-[issues-img]:https://img.shields.io/github/issues/nickderobertis/nuke-yarn
-[issues-url]:https://github.com/nickderobertis/nuke-yarn/issues
-[codecov-img]:https://codecov.io/gh/nickderobertis/nuke-yarn/branch/main/graph/badge.svg
-[codecov-url]:https://codecov.io/gh/nickderobertis/nuke-yarn
+[build-img]:https://github.com/nickderobertis/clean-yarn/actions/workflows/release.yml/badge.svg
+[build-url]:https://github.com/nickderobertis/clean-yarn/actions/workflows/release.yml
+[downloads-img]:https://img.shields.io/npm/dt/clean-yarn
+[downloads-url]:https://www.npmtrends.com/clean-yarn
+[npm-img]:https://img.shields.io/npm/v/clean-yarn
+[npm-url]:https://www.npmjs.com/package/clean-yarn
+[issues-img]:https://img.shields.io/github/issues/nickderobertis/clean-yarn
+[issues-url]:https://github.com/nickderobertis/clean-yarn/issues
+[codecov-img]:https://codecov.io/gh/nickderobertis/clean-yarn/branch/main/graph/badge.svg
+[codecov-url]:https://codecov.io/gh/nickderobertis/clean-yarn
 [semantic-release-img]:https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg
 [semantic-release-url]:https://github.com/semantic-release/semantic-release
 [commitizen-img]:https://img.shields.io/badge/commitizen-friendly-brightgreen.svg
