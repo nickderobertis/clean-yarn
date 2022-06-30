@@ -1,22 +1,9 @@
 import rimraf from "rimraf";
 import { getWorkspaces } from "react-native-monorepo-tools";
-import { ungzip } from "pako";
 import Listr from "listr";
 import { resolve } from "path";
 import { isYarnWorkspacesMonorepo } from "./workspaces";
-
-/**
- * Display Header
- */
-function cloud(): void {
-  const gzippedData = Buffer.from(
-    "H4sIAJQcFFwAA11NQQrDMAy7+xW6NYHiPKAv2B8CTgeBHsYKbcbopW+fHRraTrYSI0UO0CBgsbOvEzXZCTo4JMCrzSL+sJyWtRrK5O1uphOxYE2zqtb9GbX3+56ibmYEG0+jYjD+aUEZSa4IAv0o3jSy2KN0K8qUMb9fG77jhjLjmbF+lsxE9APlrOhe9gAAAA==",
-    "base64"
-  );
-  const unzipedData = ungzip(gzippedData);
-  console.log("\n");
-  console.log(new TextDecoder().decode(unzipedData));
-}
+import { displayHeader } from "./ui";
 
 function promisedRimraf(rmPath: string): Promise<unknown> {
   return new Promise(resolve => {
@@ -25,8 +12,7 @@ function promisedRimraf(rmPath: string): Promise<unknown> {
 }
 
 export function clean(cwd = "."): Promise<void> {
-  // Display Header
-  cloud();
+  displayHeader();
 
   const cleanRootNmTask = {
     title: "Removing Root node_modules",

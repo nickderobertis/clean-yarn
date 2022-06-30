@@ -61,7 +61,6 @@
   "dependencies": {
     "@oclif/core": "^1.9.5",
     "listr": "^0.14.3",
-    "pako": "^2.0.4",
     "react-native-monorepo-tools": "^1.2.0",
     "rimraf": "^3.0.2"
   },
